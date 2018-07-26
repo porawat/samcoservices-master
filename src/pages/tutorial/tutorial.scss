@@ -1,0 +1,67 @@
+page-tutorial {
+  .toolbar-background {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .slide-title {
+    margin-top: 2.8rem;
+  }
+
+  .slide-image {
+    max-height: 40%;
+    max-width: 60%;
+    margin: 36px 0;
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #60646B;
+
+    b {
+      color: #000000;
+    }
+  }
+  .auth-time-label {
+    min-height: 24px;
+    font-size: 32px;
+    div.item-inner {
+      border-bottom: none;
+    }
+  }
+  .auth-time {
+    
+        input {
+          text-align: left;
+          color: green;
+          width: 50%;
+          border:1px solid #0b0e07;
+         padding: 5px;
+          font-size: 16px;      
+    }   
+  }
+  ion-auto-complete {
+    width: 50vw;
+    font-size: 14px;
+    color: black;
+  }
+  input {
+    background-color: #F3F3F3;
+    border: 1px solid #cecece;
+    padding-left: 5px;
+    width: 30vw;
+    font-size: 14px;
+
+   
+  }
+}

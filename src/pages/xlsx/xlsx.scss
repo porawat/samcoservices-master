@@ -1,0 +1,11 @@
+page-xlsx {
+    label{
+        padding: 10px;
+        background: red; 
+        display: table;
+        color: #fff;
+         }
+    input[type="file"] {
+        display: none;
+    }
+}

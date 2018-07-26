@@ -1,0 +1,43 @@
+<!--
+  Generated template for the XlsxPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- JSZip library -->
+
+<ion-header>
+
+  <ion-navbar color="myblue">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>xlsx</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <label id="#bb"> Enter Your File
+        <input type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/> 
+        <!-- accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" -->
+      </label> 
+      <br>
+      <label id="#bb2"> Enter Your Picture
+        <input type="file" (change)="onPicChange($event)" multiple="false" accept="image/x-png,image/gif,image/jpeg,image/jpg"/> 
+        <!-- accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" -->
+      </label> 
+      
+      <button ion-button round (click)="exportxls()">Round Button</button>
+ 
+      <div id="formConfirmation">
+        <table class="sjs-table">
+          <tr *ngFor="let row of data">
+            <td *ngFor="let val of row">
+              {{val}}
+            </td>
+          </tr>
+        </table>
+       </div>
+
+</ion-content>

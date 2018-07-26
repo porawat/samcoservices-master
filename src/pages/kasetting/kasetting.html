@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar color="mygreen">
+    <ion-title>ตั้งจำนวนกะประจำหน่วย</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <form   (ngSubmit)="logForms(todo)">
+      <ion-item>
+          <ion-label floating>กะ</ion-label>
+                  <ion-select [(ngModel)]="todo" name="ka">
+                    <ion-option value="1">1</ion-option>
+                    <ion-option value="2">2</ion-option>
+                    <ion-option value="3">3</ion-option>
+                    <ion-option value="4">4</ion-option>
+                  </ion-select>
+          </ion-item>
+        
+
+    <ion-list inset>
+        <div class="row pointbutton">
+            <!-- <div class="col">จุด</div> -->
+            <div class="col"><button ion-button type="submit" block color="mygreen">[บันทึกกะ]</button></div>           
+            
+          </div>
+          
+        </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,54 @@
+
+page-powsetting {
+    .pointbutton .col {
+        background-color:white;
+       // color: white;
+        font-weight: bold;
+        font-size: 12px;
+       text-align: left
+    }
+    .header .col {
+        background-color:#488aff;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+       text-align: left
+    }
+    .point-container{
+         padding: 2px ; border-style: solid;
+         border-width: 1px;
+    }
+   
+    .toast-success {
+        
+            // background-color:#32db64;
+             background-color: white;
+      }
+      .toast-container{
+        background-color: white;
+        }
+        .alertCustomCss {
+    // text color for basic alerts
+    color: white; 
+
+    // alert modal page bg color. Warning this will remove the alert transparency
+    //background-color: color($colors, dark, base); 
+
+    button {
+        color: white !important; // button text color
+        background-color: color($colors, secondary, base) !important;
+            //button bg color
+    }
+
+    .alert-message {
+        color: white; // text color for confirm alerts
+    }
+
+    .alert-wrapper {
+        background-color: color($colors, dark, base); // bg color of alert content
+    }
+  }
+  .pointer {
+    cursor:pointer;
+  }
+}
