@@ -86,5 +86,7 @@
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <allow-navigation href="http://192.168.11.239:8100" />
     <allow-navigation href="http://192.168.229.248:8100" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <allow-navigation href="http://192.168.229.248:8101" />
     <engine name="android" spec="7.0.0" />
 </widget>
