@@ -20,7 +20,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TutorialPage;//SettingPage;//SignaturePage;//CheckpointPage;//LoginPage; //;//TutorialPage;
+  rootPage: any = HomePage;//TutorialPage;//SignaturePage;//CheckpointPage;//LoginPage; //;//TutorialPage;
   
 
 
@@ -40,13 +40,14 @@ export class MyApp {
     if(this.platform.is('android')){
       console.log('android');
       this.pages = [
-        { color:'primary',icon:'ios-home',title: 'Home', component: HomePage },
-        { color:'secondary',icon:'ios-list',title: 'List', component: ListPage },
-        { color:'danger',icon:'ios-camera',title: 'Takephoto', component: TakephotoPage },
+        // { color:'primary',icon:'ios-home',title: 'Home', component: HomePage },
+        // { color:'secondary',icon:'ios-list',title: 'List', component: ListPage },
+        // { color:'danger',icon:'ios-camera',title: 'Takephoto', component: TakephotoPage },
         { color:'myblue', icon:'pie',title: 'Charts', component: ChartPage },
-        { color:'dark',icon:'ios-create',title: 'Sign', component: SignaturePage },
-        { color:'dark',icon:'ios-create',title: 'Tutorial', component: TutorialPage },
-        { color:'mygreen',icon:'md-locate',title: 'Checkpoint', component: CheckpointPage },
+        // { color:'dark',icon:'ios-create',title: 'Sign', component: SignaturePage },
+        { color:'dark',icon:'md-cog',title: 'Setting', component: SettingPage },
+        { color:'primary',icon:'ios-create',title: 'ตรวจงาน', component: TutorialPage },
+        // { color:'mygreen',icon:'md-locate',title: 'Checkpoint', component: CheckpointPage },
        
       ];
     }else{
@@ -60,7 +61,7 @@ export class MyApp {
         { color:'mygreen',icon:'list-box',title: 'xls', component: XlsxPage },
         { color:'dark',icon:'md-cog',title: 'Setting', component: SettingPage },
         { color:'mygreen',icon:'md-locate',title: 'Checkpoint', component: CheckpointPage },
-        { color:'dark',icon:'ios-create',title: 'Tutorial', component: TutorialPage },
+        { color:'dark',icon:'ios-create',title: 'ตรวจงาน', component: TutorialPage },
       ];
     }
     // used for an example of ngFor and navigation

@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform,ViewController } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ToastController } from 'ionic-angular';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import {TutorialPage} from '../../pages/tutorial/tutorial';
+
+
 /**
  * Generated class for the SignaturePage page.
  *
@@ -28,61 +30,44 @@ export class SignaturePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
-    private screenOrientation: ScreenOrientation,
+    public viewCtrl: ViewController,
     public toastCtrl: ToastController) {
     if (this.platform.is('android')) {
-     // console.log(this.screenOrientation.type);
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE); 
-     // console.log(this.screenOrientation.type);
-      
-       if(platform.width()>platform.height()){
-        this.Width=platform.width() * 80 / 100;
-        this.Height=platform.height() * 45 / 100;
-       }else{
-        this.Width=platform.height() * 45 / 100; 
-        this.Height=platform.width() * 80 / 100;
-       }
-    // console.log(this.Width,this.Height)
-
      this.signaturePadOptions = {
       'minWidth': 2,
-      'canvasWidth': this.Width,
-      'canvasHeight': this.Height,
-      'penColor': 'red'
+      'canvasWidth':Math.ceil(platform.width()*80/100),
+      'canvasHeight': Math.ceil(platform.height()*45/100),
+      'penColor': 'red',
+     
     }
-      }
-
-
-
-     else {
+      } else {
       this.signaturePadOptions = {
         'minWidth': 2,
-        'canvasWidth': platform.width() * 80 / 100,
-        'canvasHeight': platform.height() * 50 / 100,
-        'penColor': 'red'
+        'canvasWidth': 600,
+        'canvasHeight': 400 ,
+        'penColor': 'red',       
       }
     }
     // this.signaturePadOptions;
-    console.log('Width: ' + platform.width());
-    console.log('Height: ' + platform.height());
+  console.log('Width: ' + platform.width());
+  console.log('Height: ' + platform.height());
   }
 
   ionViewDidLoad() {
-    if (this.platform.is('android')) {
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    }
+    // if (this.platform.is('android')) {
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE); 
+    // }
   }
   ionViewDidEnter() {
-    if (this.platform.is('android')) {
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    }
+    // if (this.platform.is('android')) {
+    //   this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE); 
+    //   }
     this.signaturePad.clear()
   }
   ionViewDidLeave() {
-    if (!this.platform.is('core')){
-      //device-specific code, such as detecting screen rotation
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-  }
+    // if (this.platform.is('android')) {
+    //   this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT); 
+    //   }
     console.log('ออก');
   }
   /*
@@ -95,19 +80,38 @@ export class SignaturePage {
   }
 
   savePad() {
-    this.signatureImage = this.signaturePad.toDataURL();
-    console.log(this.signatureImage);
-    this.signaturePad.clear();
-    let toast = this.toastCtrl.create({
-      message: 'New Signature saved.',
-      duration: 1000,
-      position: 'top'
-    });
-    toast.present();
+    if(this.signaturePad.isEmpty()){
+      let toast = this.toastCtrl.create({
+        message: 'กรุณาเซ็นด้วยครับ !!!',
+        duration: 1000,
+        position: 'top'
+      });
+      toast.present();
+    }else{
+      this.signatureImage = this.signaturePad.toDataURL();
+
+ const data={
+    signature:this.signaturePad.toDataURL()
+   }
+
+   this.viewCtrl.dismiss(data);
+//  this.viewCtrl.dismiss(data);
+//        let toast = this.toastCtrl.create({
+//          message: 'New Signature saved.',
+//          duration: 1000,
+//          position: 'top'
+//        });
+//        toast.present();
+//        this.viewCtrl.dismiss();
+//        this.navCtrl.setRoot(TutorialPage,{signature:this.signaturePad.toDataURL()});
+    }
+   
+   
+  // window.location.reload();
   }
 
   drawCancel() {
-    // this.navCtrl.push(HomePage);
+    this.viewCtrl.dismiss();
   }
 
   drawComplete() {

@@ -1,14 +1,15 @@
 <ion-header no-shadow>
   <ion-navbar>
     <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="startApp()" color="primary">SKIP</button>
+      <button ion-button (click)="startApp()" color="primary">ตั้งค่า</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
-  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
-
+   
+  <ion-slides pager="false" effect ="slide" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">  
+   
     <ion-slide>
 
       <h2 class="slide-title">1.เลือกกะที่ต้องการบันทึก </h2>
@@ -26,17 +27,16 @@
       <ion-grid *ngIf="showdatebutton===false">
         <ion-col>
 
-          <select [(ngModel)]="selectedday">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-
-            <option value="8">8</option>
-            <option value="9">9</option>
+          <select [(ngModel)]="selectedday" (ngModelChange)="changeday($event)" name="sel2">
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -71,7 +71,26 @@
         </ion-col>
         <br>
       </ion-grid>
-
+        <table class="pure-table pure-table-bordered" style="width: 100%" *ngIf="KASHOW===true">
+            <thead>
+                <tr>
+                   
+                    <th>กะ</th>
+                    <th>เลข</th>
+                    <th>วันที่</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr  *ngFor="let row of datarow">
+                    
+                    <td>{{row.KA}}</td>
+                    <td>{{row.CheckList_ID}}</td>
+                    <td>{{row.Date_log}}</td>
+                </tr>
+        
+            </tbody>
+        </table>
 
       <form (ngSubmit)="KaForms(todo)">
         <ion-item>
@@ -83,7 +102,16 @@
 
           </ion-select>
         </ion-item>
-        <ion-item>คุณเลือก กะ {{ka}} - {{showDate}}</ion-item>
+        <ion-item>
+          <div *ngIf="showdatebutton===false">
+              คุณเลือก กะ {{ka}} - {{selectedday}}-{{selectedmont}}-{{selectedyear}}
+          </div>
+          <div *ngIf="showdatebutton===true" class="title">
+              คุณเลือก กะ {{ka}} - {{showDate}}
+          </div>
+         
+        </ion-item>
+       
 
         <ion-list inset>
 
@@ -95,7 +123,7 @@
       <ion-list inset>
         <ion-item *ngFor="let asset of datasasset; let i = index">
           <ion-label>{{i+1}}-{{asset.Asset_name}}</ion-label>
-          <input item-end [(ngModel)]="asset.quatity" name='quatity' type="text" placeholder="จำนวน">
+          <input item-end [(ngModel)]="asset.quatity" name='quatity' type="text">
         </ion-item>
       </ion-list>
     </ion-slide>
@@ -109,7 +137,7 @@
       <ion-list>
 
 
-        <ion-list radio-group [(ngModel)]="securoom.cctv">
+        <ion-list radio-group [(ngModel)]="securoom.CCTV">
 
           <ion-list-header>
             กล้อง CCTV
@@ -130,47 +158,27 @@
 
         <ion-item *ngIf="showbecuce===true">
 
-          <textarea [(ngModel)]="securoom.CCTVtitle" name="CCTVtitle"></textarea>
+          <textarea [(ngModel)]="securoom.CCTV_Error" name="CCTVtitle"></textarea>
 
         </ion-item>
 
-
-
-
         <ion-list radio-group [(ngModel)]="securoom.DVR">
-
           <ion-list-header>
             เครื่องบันทึกกล้องวงจรปิด (DVR)
           </ion-list-header>
-
           <ion-item>
             <ion-label>ปกติ</ion-label>
             <ion-radio value="1" (click)="setDvr(1)"></ion-radio>
           </ion-item>
-
-
           <ion-item>
             <ion-label>ไม่ปกติ</ion-label>
             <ion-radio value="2" (click)="setDvr(2)"></ion-radio>
           </ion-item>
-
         </ion-list>
-
         <ion-item *ngIf="showdvr===true">
-
-          <textarea [(ngModel)]="securoom.DVRtitle" name="DVRtitle"></textarea>
-
+          <textarea [(ngModel)]="securoom.DVR_Error" name="DVRtitle"></textarea>
         </ion-item>
-
-      </ion-list>
-
-    </ion-slide>
-    <ion-slide>
-
-      <h2 class="slide-title">4.สรุปการตรวจ ALARM </h2>
-
-      <ion-list inset>
-        <ion-list radio-group [(ngModel)]="securoom.Alarm">
+        <ion-list radio-group [(ngModel)]="securoom.ALARM">
 
           <ion-list-header>
             ALARM
@@ -192,16 +200,15 @@
         <ion-item *ngIf="showAlarm===true">
 
 
-          <textarea [(ngModel)]="securoom.Alarmtitle" name="DVRtitle"></textarea>
+          <textarea [(ngModel)]="securoom.ALARM_Error" name="DVRtitle"></textarea>
 
         </ion-item>
-
-
       </ion-list>
+
     </ion-slide>
     <ion-slide>
 
-      <h2 class="slide-title">5.สรุปการตรวจพื้นที่อาคาร </h2>
+      <h2 class="slide-title">4.สรุปการตรวจพื้นที่อาคาร </h2>
 
       <ion-list inset>
 
@@ -227,7 +234,7 @@
 
         <ion-item *ngIf="showbuild===true">
 
-          <textarea [(ngModel)]="securoom.inbuildingtitle" name="buildingtitle"></textarea>
+          <textarea [(ngModel)]="securoom.INbuilding_Error" name="buildingtitle"></textarea>
 
         </ion-item>
 
@@ -252,31 +259,102 @@
         </ion-list>
 
         <ion-item *ngIf="showoutbuild===true">
-          <textarea [(ngModel)]="securoom.outbuildingtitle" name="buildingtitle"></textarea>
+          <textarea [(ngModel)]="securoom.OUTbuilding_Error" name="buildingtitle" ></textarea>
 
         </ion-item>
 
       </ion-list>
+
+     
+
+    
+    </ion-slide>
+    <ion-slide>
+
+        <h2 class="slide-title">5.สรุปการตรวจพื้นที่อาคาร(ต่อ) </h2>
+  
+       
+            <ion-list>
+
+                <ion-list-header>
+                  สรุปยอดบัตร Visitor
+                </ion-list-header>
+        
+              </ion-list>
+        
+              <ion-item>
+               
+                <textarea [(ngModel)]="securoom.V_Report" name="V_Report" class="report"></textarea>
+             
+              </ion-item>
+       
+      
+            <ion-list radio-group [(ngModel)]="securoom.BUZZER">
+
+                <ion-list-header>
+                  สรุปการตรวจเซ็ค BUZZER ประตู Access Control
+                </ion-list-header>
+      
+                <ion-item>
+                  <ion-label>ปกติ</ion-label>
+                  <ion-radio value="1"></ion-radio>
+                </ion-item>
+      
+      
+                <ion-item>
+                  <ion-label>ไม่ปกติ</ion-label>
+                  <ion-radio value="2"></ion-radio>
+                </ion-item>
+      
+              </ion-list>
+      
+              <ion-item>
+                <textarea [(ngModel)]="securoom.BUZZER_Error" name="BUZZER_Error" class="report"></textarea>
+      
+              </ion-item>
+       
+       
+        
+        </ion-slide>
+    <ion-slide>
+      
+      <h2 class="slide-title">6.บันทึกการปฏิบัติงาน รปภ ประจำจุด</h2>
+      <ion-list class="checkpoint">
+      <form>
+        <ion-grid text-left>
+          <ion-row *ngFor="let singleform of dataslides;let i=index">
+            <ion-col width-40 style="vertical-align: middle; border-bottom: 1px solid #ddd;">{{i+1}}.{{singleform.Point_set}} &nbsp;&nbsp; {{singleform.Point_name}} </ion-col>
+            <ion-col width-50 style="vertical-align: middle; border-bottom: 1px solid #ddd;">
+              <ion-auto-complete [(ngModel)]="singleform.Point_emp" name="Point_emp" [dataProvider]="completeTestService"></ion-auto-complete>
+            </ion-col>
+            <hr>
+          </ion-row>
+        </ion-grid>
+        
+      </form>
+     </ion-list>
     </ion-slide>
 
-    <!-- <ion-slide *ngFor="let slide of slides">
-      <img [src]="slide.image" class="slide-image" />
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
-     
-    </ion-slide> -->
+    <ion-slide class="checkpoint">  
+      <h2 class="slide-title">ลงชื่อหัวหน้า รปภ.</h2>
+      <img src="{{signature}}" class="signature" (click)="modelsigh()"/>
+
+      <button ion-button icon-end large clear (click)="modelsigh()" *ngIf="!signature">
+          ลงลายชื่อ
+          <ion-icon name="md-contact"></ion-icon>
+        </button>
+    </ion-slide>
 
     <ion-slide>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
-      <h2 class="slide-title">UTORIAL_SLIDE4_TITLE</h2>
+      <img src="assets/img/checkbox-303113_640.png" class="slide-image" />
+      <h2 class="slide-title">คุณกำลังจะบันทึกข้อมูล</h2>
 
-      <button ion-button icon-end large clear (click)="startApp()">
-        CONTINUE
+      <button ion-button icon-end large clear (click)="dataassetForms()">
+        บันทึก
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
-      <button ion-button type="button" (click)="dataassetForms()" block color="mygreen">บันทึก</button>
+      <!-- <button ion-button type="button" (click)="startApp()"  block color="mygreen">บันทึก</button> -->
     </ion-slide>
-
   </ion-slides>
 
 </ion-content>

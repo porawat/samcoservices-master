@@ -7,13 +7,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content padding dir="{{dir}}">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-  <button ion-button secondary (click)="logout()">logout</button>
+    <ion-card>
+        <img src="assets/img/ica-slidebox-img-2.png" class="avatar"/>
+        <ion-card-content>
+          <ion-card-title class="center">
+           ระบบตรวจงานประจำวัน online 
+            </ion-card-title>
+          <p class="center">
+            ...
+          </p>
+        </ion-card-content>
+      </ion-card> 
+      <button ion-button icon-end large clear (click)="startact()">
+        เริ่ม
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <ion-title class="center" (click)="logout()">ออกจากระบบ</ion-title>
+    </ion-toolbar>
+  </ion-footer>

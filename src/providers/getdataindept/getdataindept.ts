@@ -28,7 +28,7 @@ export class GetdataindeptProvider {
         .subscribe(
           res => {
             const req = res.json();
-            console.log(req);
+      //      console.log(req);
             
             if (req.results === 'success') {
              observer.next(req.datarow);
@@ -50,10 +50,32 @@ export class GetdataindeptProvider {
         .subscribe(
           res => {
             const req = res.json();
-            console.log(req);
+         //   console.log(req);
             
             if (req.results === 'success') {
              observer.next(req.datarow);
+             observer.complete();
+            }
+
+          },
+          err => {
+            //     console.log('Error occured');
+            return Observable.throw("Please insert credentials");
+          });
+
+    });
+  }
+  public checkKa(items){
+    return Observable.create(observer => {
+      // At this point make a request to your backend to make a real check!
+      this.http.post(this.auth.ServerURL() + 'pow_checkka.php', items)
+        .subscribe(
+          res => {
+            const req = res.json();
+          //console.log(req);
+            
+            if (req.results === 'success') {
+             observer.next(req);
              observer.complete();
             }
 

@@ -28,6 +28,7 @@ import { AutocompleteServiceProvider } from '../providers/autocomplete-service/a
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { GetdataindeptProvider } from '../providers/getdataindept/getdataindept';
 import { DatePicker } from '@ionic-native/date-picker';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -52,7 +53,7 @@ import { DatePicker } from '@ionic-native/date-picker';
    
     IonicModule.forRoot(MyApp),
   ],
-  bootstrap: [IonicApp],
+   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,

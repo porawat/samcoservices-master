@@ -106,4 +106,25 @@ export class SettingProvider {
 
     });
   }
+  public dairycheck(items){
+    return Observable.create(observer => {
+      // At this point make a request to your backend to make a real check!
+      this.http.post(this.auth.ServerURL() + 'pow_dailycheck.php', items)
+        .subscribe(
+          res => {
+            const req = res.json();
+            console.log(req);
+            if (req.results === 'success') {
+             observer.next(req.datarow);
+             observer.complete();
+            }
+
+          },
+          err => {
+            //     console.log('Error occured');
+            return Observable.throw("Please insert credentials");
+          });
+
+    });
+  }
 }

@@ -1,3 +1,4 @@
+@import 'https://unpkg.com/purecss@1.0.0/build/pure-min.css';
 page-tutorial {
   .toolbar-background {
     background: transparent;
@@ -7,7 +8,10 @@ page-tutorial {
   .slide-zoom {
     height: 100%;
   }
-
+  ion-slides {
+    height: auto;
+  }
+ 
   .slide-title {
     margin-top: 2.8rem;
   }
@@ -32,6 +36,11 @@ page-tutorial {
       color: #000000;
     }
   }
+  .checkpoint{
+    height: auto;
+    overflow: auto;
+    overflow-x: hidden;
+  }
   .auth-time-label {
     min-height: 24px;
     font-size: 32px;
@@ -50,10 +59,13 @@ page-tutorial {
           font-size: 16px;      
     }   
   }
+ 
   ion-auto-complete {
     width: 50vw;
     font-size: 14px;
     color: black;
+    height: auto;
+    overflow: auto;
   }
   // input {
   //   background-color: #F3F3F3;
@@ -65,10 +77,11 @@ page-tutorial {
    
   // }
   input[type=text] {
-    border: 2px solid rgb(69, 68, 73);
+    border: 2px solid rgb(228, 227, 230);
     border-radius: 4px;
-    width: 20vw;
+    width: 10vw;
     font-size: 18px;
+    text-align: center;
 
 }
 input[type=text]:focus {
@@ -92,6 +105,23 @@ textarea:focus {
   outline: none !important;
   border-color: rgb(240, 2, 2);
   box-shadow: 0 0 10px #719ECE;
+}
+
+.report { 
+  outline: none !important;
+  border-color: rgb(4, 180, 48);
+  box-shadow: 0 0 10px #719ECE;
+}
+signature-pad {
+  canvas {
+    border: dashed 1px #cccccc;
+    
+  }
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
 }
 
 }

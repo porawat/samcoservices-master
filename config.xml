@@ -83,10 +83,17 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <allow-navigation href="http://192.168.229.80:8100" />
-    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <allow-navigation href="http://192.168.11.239:8100" />
     <allow-navigation href="http://192.168.229.248:8100" />
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <allow-navigation href="http://192.168.229.248:8101" />
+    <allow-navigation href="http://192.168.229.248:8102" />
+    <allow-navigation href="http://192.168.229.248:8103" />
+    <allow-navigation href="http://192.168.229.248:8104" />
+    <plugin name="cordova-plugin-screen-orientation" spec="git+https://github.com/apache/cordova-plugin-screen-orientation.git" />
+    <allow-navigation href="http://192.168.229.248:8105" />
+    <allow-navigation href="http://192.168.229.248:8106" />
+    <allow-navigation href="http://192.168.11.239:8103" />
+    <allow-navigation href="http://192.168.229.248:8108" />
     <engine name="android" spec="7.0.0" />
 </widget>

@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 export class AutocompleteServiceProvider implements AutoCompleteService {
   user: any = JSON.parse(localStorage.getItem('USER'));
   labelAttribute = "name"; 
-  formValueAttribute = "";//ค่าออกมาเป็น object
+ // formValueAttribute = "";//ค่าออกมาเป็น object
   constructor(private http: Http) {
     console.log(this.user);
   }

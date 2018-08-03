@@ -46,7 +46,6 @@ export class AuthProvider {
               observer.next(access);
               observer.complete();
             }
-
           },
           err => {
             //     console.log('Error occured');

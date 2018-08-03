@@ -50,6 +50,9 @@ $colors: (
 $toast-ios-background:(#32db64);
 $toast-md-background:(#222);
 $toast-wp-background:(#222);
+$popover-md-width: 90%;
+$popover-ios-width: 90%;
+$popover-wp-width: 90%;
 
 // App iOS Variables
 // --------------------------------------------------
@@ -78,9 +81,10 @@ $toast-wp-background:(#222);
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-
+$text-color:        #000;
+$background-color:  #fff;
 @import "ionic.theme.default";
-
+//@import "ionic.theme.dark";
 
 // Ionicons
 // --------------------------------------------------
