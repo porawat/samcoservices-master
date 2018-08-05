@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
+// import { LoginPage } from '../pages/login/login';
 import { TakephotoPage } from '../pages/takephoto/takephoto';
 import { ChartPage } from '../pages/chart/chart';
 import {SignaturePage} from '../pages/signature/signature';
@@ -14,6 +14,7 @@ import {TutorialPage} from '../pages/tutorial/tutorial';
 import { SettingPage } from '../pages/setting/setting';
 import { CheckpointPage } from '../pages/checkpoint/checkpoint';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { timer } from 'rxjs/observable/timer';
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;//TutorialPage;//SignaturePage;//CheckpointPage;//LoginPage; //;//TutorialPage;
-  
+  showSplash = true;
 
 
   
@@ -82,7 +83,7 @@ export class MyApp {
      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      
+      timer(3000).subscribe(() => this.showSplash = false) 
 
     });
   }
