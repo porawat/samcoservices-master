@@ -23,7 +23,11 @@
         <preference name="SplashScreen" value="assets/img/boot.png" />
         <preference name="SplashScreenWidth" value="750" />
         <preference name="SplashScreenHeight" value="1317" />
+<<<<<<< HEAD
         <preference name="SplashScreenDelay" value="1500" />
+=======
+        <preference name="SplashScreenDelay" value="1000" />
+>>>>>>> 6c9737bc07b02bcd773a7f7b37c1d67a816a6afb
     </platform>
     <platform name="android">
         <allow-intent href="market:*" />
@@ -88,18 +92,8 @@
     <plugin name="cordova-plugin-ionic-webview" spec="1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-    <allow-navigation href="http://192.168.229.80:8100" />
-    <allow-navigation href="http://192.168.11.239:8100" />
-    <allow-navigation href="http://192.168.229.248:8100" />
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
-    <allow-navigation href="http://192.168.229.248:8101" />
-    <allow-navigation href="http://192.168.229.248:8102" />
-    <allow-navigation href="http://192.168.229.248:8103" />
-    <allow-navigation href="http://192.168.229.248:8104" />
     <plugin name="cordova-plugin-screen-orientation" spec="git+https://github.com/apache/cordova-plugin-screen-orientation.git" />
-    <allow-navigation href="http://192.168.229.248:8105" />
-    <allow-navigation href="http://192.168.229.248:8106" />
-    <allow-navigation href="http://192.168.11.239:8103" />
-    <allow-navigation href="http://192.168.229.248:8108" />
     <engine name="android" spec="7.0.0" />
+    <engine name="browser" spec="5.0.3" />
 </widget>
