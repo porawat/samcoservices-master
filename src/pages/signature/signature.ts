@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform,ViewController ,AlertController} from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ToastController } from 'ionic-angular';
 import {TutorialPage} from '../../pages/tutorial/tutorial';
@@ -30,6 +30,7 @@ export class SignaturePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
+    private alertCtrl:AlertController,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController) {
     if (this.platform.is('android')) {
@@ -69,6 +70,20 @@ export class SignaturePage {
     //   this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT); 
     //   }
     console.log('ออก');
+    if(this.signaturePad.isEmpty()) {
+      return false;
+    }
+  }
+  ionViewWillLeave(){
+   
+    console.log('จะออกออก');
+  }
+  ionViewCanLeave() {
+    console.log('จะออกออก2');
+    if(this.signaturePad.isEmpty()) {
+      return false;
+  
+    }
   }
   /*
   drawComplete() {
@@ -80,6 +95,8 @@ export class SignaturePage {
   }
 
   savePad() {
+  // let sign = this.navParams.data.data;
+  // console.log(sign);
     if(this.signaturePad.isEmpty()){
       let toast = this.toastCtrl.create({
         message: 'กรุณาเซ็นด้วยครับ !!!',
@@ -91,6 +108,7 @@ export class SignaturePage {
       this.signatureImage = this.signaturePad.toDataURL();
 
  const data={
+    
     signature:this.signaturePad.toDataURL()
    }
 

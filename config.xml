@@ -19,6 +19,12 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <platform name="browser">
+        <preference name="SplashScreen" value="assets/img/boot.png" />
+        <preference name="SplashScreenWidth" value="750" />
+        <preference name="SplashScreenHeight" value="1317" />
+        <preference name="SplashScreenDelay" value="1500" />
+    </platform>
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />

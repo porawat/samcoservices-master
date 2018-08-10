@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading} from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import 'rxjs/add/operator/map';

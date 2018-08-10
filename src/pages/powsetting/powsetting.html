@@ -15,18 +15,6 @@
 <ion-content padding>
   <div class="point-container">
     <ion-list inset>
-      <!-- <div class="row header">
-          <div class="col" >ลำดับ</div>
-          <div class="col" >รหัสจุด</div>
-          <div class="col" >ชื่อจุด</div>
-          <div class="col" >*</div>
-        </div>
-        <div class="row" *ngFor="let item of items;let i=index" (click)="itemSelected(item)" >
-          <div class="col " >{{i+1}}</div> 
-          <div class="col " >{{item.Point_set}}</div>
-          <div class="col " >{{item.Point_name}}</div>
-          <div class="col " style="text-align: right"><ion-icon name="ios-trash" item-end (click)="delpoint(item)" class="pointer"></ion-icon></div>
-          </div> -->
           <div *ngFor="let singleItem of items;let i=index">
               <div ion-item
                  style="width: 50%;

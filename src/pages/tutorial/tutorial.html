@@ -260,22 +260,12 @@
 
         <ion-item *ngIf="showoutbuild===true">
           <textarea [(ngModel)]="securoom.OUTbuilding_Error" name="buildingtitle" ></textarea>
-
         </ion-item>
-
       </ion-list>
-
-     
-
-    
     </ion-slide>
     <ion-slide>
-
-        <h2 class="slide-title">5.สรุปการตรวจพื้นที่อาคาร(ต่อ) </h2>
-  
-       
+        <h2 class="slide-title">5.สรุปการตรวจพื้นที่อาคาร(ต่อ) </h2>    
             <ion-list>
-
                 <ion-list-header>
                   สรุปยอดบัตร Visitor
                 </ion-list-header>
@@ -299,23 +289,15 @@
                   <ion-label>ปกติ</ion-label>
                   <ion-radio value="1"></ion-radio>
                 </ion-item>
-      
-      
                 <ion-item>
                   <ion-label>ไม่ปกติ</ion-label>
                   <ion-radio value="2"></ion-radio>
-                </ion-item>
-      
-              </ion-list>
-      
+                </ion-item>     
+              </ion-list>     
               <ion-item>
-                <textarea [(ngModel)]="securoom.BUZZER_Error" name="BUZZER_Error" class="report"></textarea>
-      
+                <textarea [(ngModel)]="securoom.BUZZER_Error" name="BUZZER_Error" class="report"></textarea>    
               </ion-item>
-       
-       
-        
-        </ion-slide>
+            </ion-slide>
     <ion-slide>
       
       <h2 class="slide-title">6.บันทึกการปฏิบัติงาน รปภ ประจำจุด</h2>
@@ -336,10 +318,17 @@
     </ion-slide>
 
     <ion-slide class="checkpoint">  
-      <h2 class="slide-title">ลงชื่อหัวหน้า รปภ.</h2>
-      <img src="{{signature}}" class="signature" (click)="modelsigh()"/>
+      <h2 class="slide-title">1 ลงชื่อหัวหน้า รปภ ออกกะ.</h2>
+      <img src="{{signature1}}" class="imgsign" (click)="modelsigh(1)" *ngIf="signature1"/>
 
-      <button ion-button icon-end large clear (click)="modelsigh()" *ngIf="!signature">
+       <button ion-button icon-end large clear (click)="modelsigh(1)" *ngIf="!signature1">
+          ลงลายชื่อ
+          <ion-icon name="md-contact"></ion-icon>
+        </button>
+        <h2 class="slide-title">2 ลงชื่อหัวหน้า รปภ เข้ากะ</h2>
+      <img src="{{signature2}}" class="imgsign" (click)="modelsigh2(2)" *ngIf="signature2"/>
+
+       <button ion-button icon-end large clear (click)="modelsigh2(2)" *ngIf="!signature2">
           ลงลายชื่อ
           <ion-icon name="md-contact"></ion-icon>
         </button>

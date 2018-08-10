@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController,Platform} from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { SettingProvider } from '../../providers/setting/setting';
 
@@ -28,9 +28,13 @@ export class PowsettingPage {
      public navParams: NavParams,
      public toastCtrl: ToastController,
      public set: SettingProvider,
+     public platform: Platform, 
      public alertCtrl: AlertController
      ) {
        this.items=navParams.data;
+       if(this.platform.is('android')){
+         
+       }
        
   }
 
