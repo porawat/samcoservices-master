@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform,ViewController ,AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform,ViewController } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ToastController } from 'ionic-angular';
 
@@ -30,7 +30,6 @@ export class SignaturePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
-    private alertCtrl:AlertController,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController) {
     if (this.platform.is('android')) {

@@ -172,7 +172,7 @@ export class TutorialPage {
       Pid: this.selectedmont + this.selectedyear
     }
     this.getdata.checkKa(data).subscribe(res => {
-      // console.log(res.row);
+       console.log(res.row);
       this.datarow = res.datarow;
       // this.navCtrl.push(PowsettingPage, res);
       if (res.row === 0) {
@@ -208,7 +208,7 @@ export class TutorialPage {
         //   dateNow2=splitted[1];
         //       //  }
         this.showDate = day + '-' + month + '-' + '' + year;
-        this.Pid = day + '' + month + '' + year;
+        this.Pid =  year+ '' + month + '' + day;
         //console.log(this.Pid);
       },
       err => console.log('Error occurred while getting date: ', err)
@@ -252,9 +252,13 @@ export class TutorialPage {
       // console.log(this.user);
 
       if (!this.Pid) {
-        newid = this.ka + this.selectedday + this.selectedmont + this.selectedyear;
+        newid = 
+        this.selectedyear +
+        this.selectedmont + 
+        this.selectedday + '-'+
+        this.ka +'-'+ this.user.Dept_ID;
       } else {
-        newid = this.ka + this.Pid;
+        newid = this.Pid+'-'+this.ka + '-'+this.user.Dept_ID;
       }
       //    console.log(newid);
 
@@ -268,6 +272,8 @@ export class TutorialPage {
         'signsuper2': this.signature2,
         'Pid': newid
       };
+     // console.log(items);
+      
       this.set.dairycheck(items).subscribe(allowed => {
         console.log(allowed);
         let toast = this.toastCtrl.create({
@@ -288,6 +294,7 @@ export class TutorialPage {
           toast.present();
           //  this.closeLoading();
         });
+        
     }
 
 

@@ -4,7 +4,7 @@ import { ToastController } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import 'rxjs/add/operator/map';
 import { AuthProvider } from '../../providers/auth/auth';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LoginPage page.
  *
@@ -33,14 +33,22 @@ export class LoginPage {
     public nav: NavController,
     private loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    private storage: Storage
   ) {
-    console.log(this.user);
-    if (this.user) {
-      this.nav.setRoot(HomePage);
-    }
+    // console.log(this.user);
+    // if (this.user) {
+    //   this.nav.setRoot(HomePage);
+    // }
   }
-
+  ngOnInit() {
+    this.storage.get("USER").then(login => {
+      if (login && login.Userid !== "") {
+        this.nav.setRoot(HomePage);
+       console.log(login);
+      }
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }

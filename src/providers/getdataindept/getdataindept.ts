@@ -72,7 +72,7 @@ export class GetdataindeptProvider {
         .subscribe(
           res => {
             const req = res.json();
-          //console.log(req);
+          console.log(req);
             
             if (req.results === 'success') {
              observer.next(req);

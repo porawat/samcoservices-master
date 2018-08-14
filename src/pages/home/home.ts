@@ -3,22 +3,30 @@ import { NavController ,Platform} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import {TutorialPage}from '../tutorial/tutorial';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  dir: string = 'ltr';
-  user: any = JSON.parse(localStorage.getItem('USER'));
+  public dir: string = 'ltr';
+ 
   constructor(
     public navCtrl: NavController,
     public platform: Platform,
+    private storage: Storage,
     public auth: AuthProvider) {
-       
-      if (!this.user) {
-        this.navCtrl.setRoot(LoginPage);
-      }
+     
+   
       this.dir = platform.dir();
+  }
+  ngOnInit() {
+    this.storage.get("USER").then(login => {
+      if (login && login.Userid === "") {
+        this.navCtrl.setRoot(LoginPage);
+      // console.log(login);
+      }
+    });
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');

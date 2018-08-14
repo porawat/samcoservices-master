@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the AuthProvider provider.
 
@@ -14,7 +14,7 @@ export class AuthProvider {
   pass: any;
   eid: any;
   emname: any;
-  constructor(private http: Http) {
+  constructor(private http: Http,private storage: Storage) {
     console.log('Hello AuthProvider Provider');
   }
   public logout() {
@@ -36,6 +36,7 @@ export class AuthProvider {
             console.log(req);
             if (req.results === 'success_login') {
               // localStorage.setItem('USER', JSON.stringify(req));
+              this.storage.set("USER", JSON.stringify(req));
               localStorage.setItem('USER', JSON.stringify(req));
               this.pass = req.Pass;
               this.eid = req.Userid;

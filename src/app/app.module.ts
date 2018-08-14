@@ -28,7 +28,8 @@ import { AutocompleteServiceProvider } from '../providers/autocomplete-service/a
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { GetdataindeptProvider } from '../providers/getdataindept/getdataindept';
 import { DatePicker } from '@ionic-native/date-picker';
-
+import { NativeStorage } from '@ionic-native/native-storage';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -52,6 +53,7 @@ import { DatePicker } from '@ionic-native/date-picker';
     AutoCompleteModule,
    
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({name: "__ionsam"})
   ],
    bootstrap: [IonicApp],
   entryComponents: [
@@ -79,6 +81,7 @@ import { DatePicker } from '@ionic-native/date-picker';
     SettingProvider,
     ScreenOrientation,
     DatePicker,
+    NativeStorage,
     AutocompleteServiceProvider,
     GetdataindeptProvider,
   ]

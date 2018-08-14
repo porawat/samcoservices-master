@@ -3,6 +3,9 @@
     <ion-buttons end *ngIf="showSkip">
       <button ion-button (click)="startApp()" color="primary">ตั้งค่า</button>
     </ion-buttons>
+    <ion-title>
+      รายงานประจำวัน
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -127,16 +130,10 @@
         </ion-item>
       </ion-list>
     </ion-slide>
-
-
-
     <ion-slide>
 
       <h2 class="slide-title">3.สรุปการปฎิบัติหน้าที่ห้องควบคุม CCTV </h2>
-
       <ion-list>
-
-
         <ion-list radio-group [(ngModel)]="securoom.CCTV">
 
           <ion-list-header>
@@ -147,8 +144,6 @@
             <ion-label>ปกติ</ion-label>
             <ion-radio value="1" (click)="getval(1)"></ion-radio>
           </ion-item>
-
-
           <ion-item>
             <ion-label>ไม่ปกติ</ion-label>
             <ion-radio value="2" (click)="getval(2)"></ion-radio>
